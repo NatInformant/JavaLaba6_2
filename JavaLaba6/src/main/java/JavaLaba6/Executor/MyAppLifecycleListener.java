@@ -1,4 +1,4 @@
-package JavaLaba6.Model;
+package JavaLaba6.Executor;
 
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
@@ -11,6 +11,8 @@ import java.sql.SQLException;
 
 @WebListener
 public class MyAppLifecycleListener implements ServletContextListener {
+    //обьект который следит за контейнером сервлетов и при создании приложения, производит инициализацию connection к БД
+    //а при завершении приложения, закрывает connection к БД
     public static Connection connection;
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
@@ -21,7 +23,7 @@ public class MyAppLifecycleListener implements ServletContextListener {
             DriverManager.registerDriver((Driver) Class.forName("org.postgresql.Driver").newInstance());
 
             String url =
-                    "jdbc:postgresql://" +  //db type
+                    "jdbc:postgresql://" +          //db type
                             "localhost:" +          //host name
                             "5432/" +               //port
                             "users_database";       //db name
@@ -33,6 +35,10 @@ public class MyAppLifecycleListener implements ServletContextListener {
     }
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        connection=null;
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

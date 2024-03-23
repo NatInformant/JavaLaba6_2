@@ -1,10 +1,13 @@
-package JavaLaba6.Model;
+package JavaLaba6.Executor;
+
+import JavaLaba6.Model.ResultHandler;
 
 import java.sql.*;
 
-import static JavaLaba6.Model.MyAppLifecycleListener.connection;
+import static JavaLaba6.Executor.MyAppLifecycleListener.connection;
 
 public class Executor {
+    //обьект, который отвечает за общение с БД
     public static void execUpdate(String query) {
 
         try(Statement statement = connection.createStatement()) {

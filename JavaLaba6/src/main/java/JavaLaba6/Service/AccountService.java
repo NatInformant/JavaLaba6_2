@@ -1,10 +1,7 @@
 package JavaLaba6.Service;
 
-import JavaLaba6.Model.Executor;
+import JavaLaba6.Executor.Executor;
 import JavaLaba6.Model.UserProfile;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class AccountService {
     //Сервис, что следит за регистрацией пользователей
