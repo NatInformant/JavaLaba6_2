@@ -1,7 +1,6 @@
 package JavaLaba6.Model;
 
 import java.sql.*;
-import java.util.Properties;
 
 import static JavaLaba6.Model.MyAppLifecycleListener.connection;
 

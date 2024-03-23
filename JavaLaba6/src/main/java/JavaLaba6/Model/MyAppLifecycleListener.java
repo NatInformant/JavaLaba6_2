@@ -16,7 +16,7 @@ public class MyAppLifecycleListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         connection = getConnection();
     }
-    public Connection getConnection() {
+    private Connection getConnection() {
         try {
             DriverManager.registerDriver((Driver) Class.forName("org.postgresql.Driver").newInstance());
 
